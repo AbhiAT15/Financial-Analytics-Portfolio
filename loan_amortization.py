@@ -3,7 +3,7 @@ import numpy as np
 import os
 
 def generate_schedule(principal, annual_rate, years):
-    # Standard EMI Formula
+    # EMI Formula
     monthly_rate = annual_rate / 12 / 100
     months = years * 12
     emi = principal * monthly_rate * (1 + monthly_rate)**months / ((1 + monthly_rate)**months - 1)
@@ -27,7 +27,6 @@ def generate_schedule(principal, annual_rate, years):
         
     return pd.DataFrame(schedule)
 
-# --- RUN IT ---
 loan_amount = 5000000  # 50 Lakhs
 rate = 8.5
 years = 20
@@ -37,4 +36,5 @@ df = generate_schedule(loan_amount, rate, years)
 
 filename = "loan_schedule.csv"
 df.to_csv(filename, index=False)
+
 print(f"DONE! Saved to: {filename}")
